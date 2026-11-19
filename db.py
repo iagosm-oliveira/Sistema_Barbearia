@@ -1,4 +1,5 @@
 import sqlite3
+from hashlib import sha256
 
 DB_NAME = "barbearia.db"
 
@@ -49,6 +50,21 @@ def inicializar_banco():
     if cursor.fetchone()[0] == 0:
         cursor.execute(
             "INSERT INTO SERVICOS (ID, TIPO, PRECO) VALUES (1, 'Masculino', 40.00), (2, 'Feminino', 80.00)"
+        )
+
+    cursor.execute("SELECT COUNT(*) FROM USUARIOS")
+    if cursor.fetchone()[0] == 0:
+        senha_padrao = sha256("123".encode("utf-8")).hexdigest()
+        usuarios_mock = [
+            ("Carlos Dono", "dono@barbearia.com", senha_padrao, "Dono"),
+            ("João Barbeiro", "joao@barbearia.com", senha_padrao, "Funcionario"),
+            ("Pedro Barbeiro", "pedro@barbearia.com", senha_padrao, "Funcionario"),
+            ("Maria Cabeleireira", "maria@barbearia.com", senha_padrao, "Funcionario"),
+            ("Ana Cabeleireira", "ana@barbearia.com", senha_padrao, "Funcionario"),
+        ]
+        cursor.executemany(
+            "INSERT INTO USUARIOS (NOME, EMAIL, SENHA, PAPEL) VALUES (?, ?, ?, ?)",
+            usuarios_mock,
         )
 
     conn.commit()
