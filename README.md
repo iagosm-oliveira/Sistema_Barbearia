@@ -100,7 +100,8 @@ Sistema_Barbearia/
 ├── usuarios.sql      # Script SQL da tabela USUARIOS + equipe inicial
 ├── servicos.sql      # Script SQL da tabela SERVICOS + valores padrão
 ├── agendamentos.sql  # Script SQL da tabela AGENDAMENTOS e chaves estrangeiras
-└── barbearia.db      # Banco de dados SQLite pronto para uso
+├── barbearia.db      # Banco de dados SQLite pronto para uso
+└── INSTRUCOES.txt    # Instruções de instalação e uso para entrega acadêmica
 ```
 
 ---

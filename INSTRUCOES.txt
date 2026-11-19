@@ -1,0 +1,94 @@
+========================================================================
+              SISTEMA BARBEARIA - INSTRUÇÕES DE INSTALAÇÃO E USO
+========================================================================
+
+Disciplina : SEGNA2 | Programação II | 20262S
+Professor  : Adilson
+Autores    : Iago Oliveira e Matheus Soares
+
+------------------------------------------------------------------------
+1. REQUISITOS DO SISTEMA
+------------------------------------------------------------------------
+- Python 3.10 ou superior instalado no computador.
+  (Download oficial, caso não tenha: https://www.python.org/downloads/)
+  Obs.: No Windows, durante a instalação do Python, marque a opção
+  "Add Python to PATH".
+
+- NÃO é necessário instalar bibliotecas externas (pip install).
+  O sistema utiliza apenas bibliotecas nativas do Python:
+  sqlite3, tkinter, hashlib (sha256), smtplib, email e datetime.
+
+------------------------------------------------------------------------
+2. INSTALAÇÃO E PREPARAÇÃO DOS ARQUIVOS
+------------------------------------------------------------------------
+1) Extraia o arquivo compactado "Sistema_Barbearia.zip".
+2) Certifique-se de que todos os arquivos estão na mesma pasta
+   ("Sistema_Barbearia"):
+   - interface.py      (Programa principal com interface gráfica)
+   - main.py           (Versão alternativa em modo terminal)
+   - db.py             (Conexão e inicialização do banco SQLite)
+   - login.py          (Login, cadastro e recuperação de senha por e-mail)
+   - cliente.py        (Regras de agendamento do cliente)
+   - funcionario.py    (Agenda cronológica do profissional)
+   - dono.py           (Relatório financeiro e cadastro de equipe)
+   - barbearia.db      (Banco de dados SQLite já configurado)
+   - usuarios.sql      (Script SQL da tabela USUARIOS)
+   - servicos.sql      (Script SQL da tabela SERVICOS)
+   - agendamentos.sql  (Script SQL da tabela AGENDAMENTOS)
+
+------------------------------------------------------------------------
+3. COMO EXECUTAR O SISTEMA
+------------------------------------------------------------------------
+1) Abra o terminal (Prompt de Comando, PowerShell ou VS Code) DENTRO
+   da pasta "Sistema_Barbearia".
+
+2) Execute o comando abaixo para abrir a interface gráfica:
+   python interface.py
+
+   (Caso utilize a versão em terminal/texto, execute: python main.py)
+
+------------------------------------------------------------------------
+4. COMO USAR O SISTEMA (PASSO A PASSO)
+------------------------------------------------------------------------
+[Acesso Geral - Tela Inicial]
+- Fazer Login: entre com e-mail e senha para acessar o painel do seu
+  perfil (Cliente, Funcionário ou Dono).
+- Cadastrar-se (Cliente): cria uma nova conta com perfil de Cliente.
+- Recuperar Senha: envia um código de 6 dígitos para o e-mail
+  cadastrado para redefinir a senha.
+
+[Área do Cliente]
+- Escolha o profissional desejado, o dia de atendimento (segunda a
+  sábado), um horário livre (atualizado em tempo real conforme os
+  agendamentos existentes) e o tipo de serviço:
+  * Masculino - R$ 40,00
+  * Feminino  - R$ 80,00
+- Clique em "Confirmar Agendamento".
+
+[Área do Funcionário (Barbeiro / Cabeleireira)]
+- Exibe a agenda do profissional logado em ordem cronológica
+  (data, horário, nome do cliente e serviço).
+
+[Área do Dono (Administrador)]
+- Relatório Financeiro: mostra o total de cortes e faturamento por
+  profissional, além do lucro total da barbearia.
+- Cadastrar Equipe: permite cadastrar novos usuários como Funcionario
+  ou Dono.
+
+------------------------------------------------------------------------
+5. CREDENCIAIS DE TESTE (JÁ CADASTRADAS NO BANCO)
+------------------------------------------------------------------------
+Senha padrão de todas as contas de teste abaixo: 123
+
+- Dono:
+  E-mail: dono@barbearia.com          | Senha: 123
+
+- Funcionários (Barbeiros / Cabeleireiras):
+  E-mail: joao@barbearia.com          | Senha: 123
+  E-mail: pedro@barbearia.com         | Senha: 123
+  E-mail: maria@barbearia.com         | Senha: 123
+  E-mail: ana@barbearia.com           | Senha: 123
+
+Dica: Para testar o envio real de e-mail em "Recuperar Senha",
+cadastre um novo cliente utilizando um endereço de e-mail válido.
+========================================================================
