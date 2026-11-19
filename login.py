@@ -1,4 +1,3 @@
-import os
 import random
 import smtplib
 import sqlite3
@@ -7,29 +6,26 @@ from hashlib import sha256
 
 from db import conectar
 
+# Gmail da barbearia que envia os códigos de recuperação
+EMAIL_REMETENTE = "tuggofmirrah@gmail.com"
+SENHA_APP = "qmfs emkb glkf uuec"  # Senha de App do Google (16 letras)
+
 
 def hash_senha(senha):
     return sha256(senha.encode("utf-8")).hexdigest()
 
 
 def enviar_email_codigo(destinatario, codigo):
-    remetente = os.getenv("SMTP_EMAIL")
-    senha_app = os.getenv("SMTP_SENHA")
-
-    if not remetente or not senha_app:
-        print(f"\n[Modo Teste] SMTP não configurado. Seu código é: {codigo}")
-        return True
-
     msg = EmailMessage()
     msg["Subject"] = "Código de Recuperação de Senha - Barbearia"
-    msg["From"] = remetente
+    msg["From"] = EMAIL_REMETENTE
     msg["To"] = destinatario
     msg.set_content(f"Seu código de verificação para redefinir a senha é: {codigo}")
 
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
             smtp.starttls()
-            smtp.login(remetente, senha_app)
+            smtp.login(EMAIL_REMETENTE, SENHA_APP)
             smtp.send_message(msg)
         print("Código enviado para o seu e-mail!")
         return True

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import os
 import random
 import sqlite3
 import tkinter as tk
@@ -138,10 +137,7 @@ def tela_recuperar_senha():
             messagebox.showerror("Erro", "Falha ao enviar o e-mail.")
             return
 
-        if not os.getenv("SMTP_EMAIL") or not os.getenv("SMTP_SENHA"):
-            messagebox.showinfo("Modo Teste", f"Código de verificação: {codigo}")
-        else:
-            messagebox.showinfo("Enviado", "Código enviado para o seu e-mail!")
+        messagebox.showinfo("Enviado", "Código enviado para o seu e-mail!")
 
         tela_confirmar_codigo(email, codigo)
 
